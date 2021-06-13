@@ -25,12 +25,12 @@ def main():
     while True:
         
         # 行動価値関数計算
-        q[0,0] = p*(r[3]+gamma*v[3])+(1-p)*(r[0]+gamma*v[0])
-        q[0,1] = r[1]+gamma*v[1]
-        q[1,0] = r[0]+gamma*v[0]
-        q[1,1] = r[2]+gamma*v[2]
-        q[2,0] = r[1]+gamma*v[1]
-        q[2,1] = r[3]+gamma*v[3]
+        q[0,0] = p*(r[3]+gamma*v[3]) + (1-p)*(r[0]+gamma*v[0])
+        q[0,1] = r[1] + gamma*v[1]
+        q[1,0] = r[0] + gamma*v[0]
+        q[1,1] = r[2] + gamma*v[2]
+        q[2,0] = r[1] + gamma*v[1]
+        q[2,1] = r[3] + gamma*v[3]
         
         # 新しい方策計算 0で初期化
         new_pi=np.zeros(6).reshape(3,2)
@@ -41,10 +41,10 @@ def main():
             new_pi[state_index,a_index]=1
             
         # 元のpiとの誤差の合計が0.01より小さければ計算終了
-        if np.abs(new_pi-pi).sum() < 0.01:
+        if np.abs(new_pi - pi).sum() < 0.01:
             
             for state_index in range(3):
-                v[state_index]=q[state_index].max()
+                v[state_index] = q[state_index].max()
             print('v=',v)
                 
             print('best policy')
@@ -55,7 +55,7 @@ def main():
             
         #状態価値関数計算 あるsでq(s,a)の最大値であることに注目
         for state_index in range(3):
-            v[state_index]=q[state_index].max()
+            v[state_index] = q[state_index].max()
         print('v=',v)
         
         

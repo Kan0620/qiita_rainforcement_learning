@@ -3,7 +3,6 @@
 
 import numpy as np
 
-
 def main():
     # 漸化式の右辺のv定義　マスに対応していて左から1,2,3,ゴール
     v = np.array([0.,0.,0.,0.])
@@ -39,12 +38,12 @@ def main():
         
         print('v=',v)
         # 行動価値関数計算
-        q[0,0] = p*(r[3]+gamma*v[3])+(1-p)*(r[0]+gamma*v[0])
-        q[0,1] = r[1]+gamma*v[1]
-        q[1,0] = r[0]+gamma*v[0]
-        q[1,1] = r[2]+gamma*v[2]
-        q[2,0] = r[1]+gamma*v[1]
-        q[2,1] = r[3]+gamma*v[3]
+        q[0,0] = p*(r[3]+gamma*v[3]) + (1-p)*(r[0]+gamma*v[0])
+        q[0,1] = r[1] + gamma*v[1]
+        q[1,0] = r[0] + gamma*v[0]
+        q[1,1] = r[2] + gamma*v[2]
+        q[2,0] = r[1] + gamma*v[1]
+        q[2,1] = r[3] + gamma*v[3]
         
         # 新しい方策計算 0で初期化
         new_pi=np.zeros(6).reshape(3,2)
@@ -52,7 +51,7 @@ def main():
             # 行動価値関数が高い行動のindex求める
             a_index = np.argmax(q[state_index])
             # 行動価値関数が大きかった行動をするように方策を変える
-            new_pi[state_index,a_index]=1
+            new_pi[state_index,a_index] = 1
         # 元のpiとの誤差の合計が0.01より小さければ計算終了
         if np.abs(new_pi-pi).sum() < 0.01:
             print('best policy')
