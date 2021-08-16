@@ -6,9 +6,9 @@ import numpy as np
 def main():
     
     # 漸化式の右辺のv定義　マスに対応していて左から1,2,3,ゴール
-    v = np.array([0.,0.,0.,0.])
+    v = np.array([0., 0., 0., 0.])
     # 報酬を定義 
-    r = np.array([-1.,-1.,-1.,10.])
+    r = np.array([-1., -1., -1., 10.])
     # マス1から左に行った時にゴールに行く確率
     p = 3/4
     # 割引率γ定義　今回は1にした
@@ -57,8 +57,3 @@ def main():
         for state_index in range(3):
             v[state_index] = q[state_index].max()
         print('v=',v)
-        
-        
-        
-        
-      
